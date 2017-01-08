@@ -1,9 +1,16 @@
+'use strict';
+
 var express = require('express');
 var router = express.Router();
+var models = require('../models');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+/*----------  Create a new user  ----------*/
+router.post('/create', function(req, res) {
+	models.User.create({
+		email: req.body.email
+	}).then(function(user) {
+		res.json(user);
+	});
 });
 
 module.exports = router;

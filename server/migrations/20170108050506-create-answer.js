@@ -8,9 +8,12 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userInput: {
+      option: {
+        type: Sequelize.INTEGER
+      },
+      text: {
         type: Sequelize.STRING
-      }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

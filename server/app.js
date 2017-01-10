@@ -15,6 +15,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var questions = require('./routes/questions');
 var answers = require('./routes/answers');
+var responses = require('./routes/responses');
 
 /*==================================================
 =            Setup for Express instance            =
@@ -38,6 +39,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/questions', questions);
 app.use('/answers', answers);
+app.use('/responses', responses);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

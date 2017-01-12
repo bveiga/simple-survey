@@ -10,6 +10,21 @@ router.post('/create', function (req, res) {
 		email: req.body.email
 	}).then(function (user) {
 		res.json(user);
+	}).catch(function (error) {
+		res.status(500).json(error);
+	});
+});
+
+/*----------  Get user by email  ----------*/
+router.post('/login', function (req, res) {
+	models.User.find({
+		where: {
+			email: req.body.email
+		}
+	}).then(function (user) {
+		res.json(user);
+	}).catch(function (error) {
+		res.status(500).json(error);
 	});
 });
 
@@ -50,8 +65,14 @@ router.get('/:user_id', function (req, res) {
 					result.push(answer);
 				});
 				res.json(result);
+			}).catch(function (error) {
+				res.status(500).json(error);
 			});
+		}).catch(function (error) {
+			res.status(500).json(error);
 		});
+	}).catch(function (error) {
+		res.status(500).json(error);
 	});
 
 });

@@ -8,6 +8,8 @@ var models = require('../models');
 router.get('/', function (req, res) {
 	models.Question.findAll({}).then(function (questions) {
 		res.json(questions);
+	}).catch(function (error) {
+		res.status(500).json(error);
 	});
 });
 
@@ -17,6 +19,8 @@ router.post('/create', function (req, res) {
 		text: req.body.text
 	}).then(function (question) {
 		res.json(question);
+	}).catch(function (error) {
+		res.status(500).json(error);
 	});
 });
 

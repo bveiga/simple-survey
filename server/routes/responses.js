@@ -8,17 +8,34 @@ var models = require('../models');
 router.get('/', function (req, res) {
 	models.Response.findAll({}).then(function (responses) {
 		res.json(responses);
+	}).catch(function (error) {
+		res.status(500).json(error);
 	});
 });
 
-/*----------  Get all responses from 1 user  ----------*/
+/*----------  Get all responses for 1 user  ----------*/
 router.get('/users/:user_id', function (req, res) {
 	models.Response.findAll({
 		where: {
-			userId: req.params.user_id
+			UserId: req.params.user_id
 		}
 	}).then(function (responses) {
 		res.json(responses);
+	}).catch(function (error) {
+		res.status(500).json(error);
+	});
+});
+
+/*----------  Get all responses for 1 question  ----------*/
+router.get('/questions/:question_id', function (req, res) {
+	models.Response.findAll({
+		where: {
+			QuestionId: req.params.question_id
+		}
+	}).then(function (responses) {
+		res.json(responses);
+	}).catch(function (error) {
+		res.status(500).json(error);
 	});
 });
 
@@ -31,6 +48,8 @@ router.post('/users/:user_id/questions/:question_id/create', function (req, res)
 		QuestionId: req.params.question_id
 	}).then(function (responses) {
 		res.json(responses);
+	}).catch(function (error) {
+		res.status(500).json(error);
 	});
 });
 

@@ -1,15 +1,19 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-	var Answer = sequelize.define('Answer', {
+	var Response = sequelize.define('Response', {
 		option: DataTypes.INTEGER,
 		text: DataTypes.STRING
 	}, {
 		classMethods: {
 			associate: function(models) {
-				// Using additional options like CASCADE etc for demonstration
-				// Can also simply do Task.belongsTo(models.User);
+				Response.belongsTo(models.User, {
+					onDelete: 'CASCADE',
+					foreignKey: {
+						allowNull: false
+					}
+				});
 
-				Answer.belongsTo(models.Question, {
+				Response.belongsTo(models.Question, {
 					onDelete: 'CASCADE',
 					foreignKey: {
 						allowNull: false
@@ -19,5 +23,5 @@ module.exports = function(sequelize, DataTypes) {
 		}
 	});
 	
-	return Answer;
+	return Response;
 };

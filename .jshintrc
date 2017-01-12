@@ -16,6 +16,10 @@
   // Allow ES6.
   "esversion": 6,
 
+  "globals":{
+    "angular": true
+  },
+
   /*
    * ENFORCING OPTIONS
    * =================

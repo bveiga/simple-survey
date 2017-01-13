@@ -10,10 +10,7 @@ module.exports = function(sequelize, DataTypes) {
 				// Can also simply do Task.belongsTo(models.User);
 
 				Answer.belongsTo(models.Question, {
-					onDelete: 'CASCADE',
-					foreignKey: {
-						allowNull: false
-					}
+					onDelete: 'CASCADE'
 				});
 			}
 		}

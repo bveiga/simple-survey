@@ -6,6 +6,7 @@
 		"node": "0.10.46"
 	},
 	"scripts": {
+		"postinstall": "mysql -u $DB_USER -p$DB_PASS -e 'CREATE DATABASE IF NOT EXISTS devdb'; ",
 		"start": "gulp"
 	},
 	"dependencies": {

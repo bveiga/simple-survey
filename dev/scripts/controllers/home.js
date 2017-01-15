@@ -8,7 +8,7 @@
  * Controller of the simpleSurveyUi
  */
 angular.module('simpleSurveyUi')
-	.controller('HomeController', function ($scope, Page) {
+	.controller('HomeController',['$scope', 'Page', function ($scope, Page) {
 		Page.setTitle('Simple Survey | Welcome');
 		Page.setLH(false);
-	});
+	}]);

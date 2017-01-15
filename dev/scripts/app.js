@@ -12,15 +12,14 @@
 var app = angular
 	.module('simpleSurveyUi', [
 		'ngResource',
-		'ngRoute',
-		'ngSanitize'
+		'ngRoute'
 	]);
 
 app.config(['$routeProvider', '$locationProvider', '$httpProvider',
 function ($routeProvider, $locationProvider, $httpProvider) {
 	$routeProvider
 		.when('/',{
-			templateUrl: 'views/home.html',
+			templateUrl: '../views/home.html',
 			controller: 'HomeController',
 			controllerAs: 'home'
 		})
@@ -53,6 +52,6 @@ app.factory('Page', function(){
 /*===================================================
 =            Main Controller for the app            =
 ===================================================*/
-app.controller('MainController', function($scope, Page) {
+app.controller('MainController', ['$scope','Page', function($scope, Page) {
 	$scope.Page = Page;
-});
+}]);

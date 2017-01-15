@@ -28,7 +28,7 @@ CREATE TABLE `Answers` (
   `text` varchar(255) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
-  `QuestionId` int(11) NOT NULL,
+  `QuestionId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `QuestionId` (`QuestionId`),
   CONSTRAINT `Answers_ibfk_1` FOREIGN KEY (`QuestionId`) REFERENCES `Questions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE

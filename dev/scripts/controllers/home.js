@@ -22,10 +22,8 @@ function ($scope, $location, AuthenticationService, Page) {
 		$scope.loading = true;
 		AuthenticationService.Login($scope.email, $scope.password, function (result) {
 			if(result.success === true) {
-				console.log('SUCCESS');
 				$location.path('/survey');
 			} else {
-				console.log('FAIL'+result.message);
 				$scope.error = result.message;
 				$scope.loading = false;
 			}

@@ -12,9 +12,25 @@ angular
 .controller('SurveyController', [
 	'$scope',
 	'$location',
-	'AuthenticationService',
+	'SurveyService',
 	'Page',
-function ($scope, $location, AuthenticationService, Page) {
+function ($scope, $location, SurveyService, Page) {
 	Page.setTitle('Simple Survey | Welcome');
 	Page.setLH(true);
+
+	$scope.question = {};
+	$scope.listOfAnswers = {};
+
+	SurveyService.getRandomQuestion(function (result) {
+		if(result.success === true) {
+			if(result.answers.length > 0) {
+				$scope.question = result.question;
+				$scope.listOfAnswers = result.answers;
+			} else {
+				$scope.question = {text: 'Looks like you\'ve answered all our questions.'};
+			}
+		} else {
+			$scope.question = {text: 'Looks like you\'ve answered all our questions.'};
+		}
+	});
 }]);

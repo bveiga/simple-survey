@@ -6,7 +6,7 @@ var models = require('../models');
 
 /*----------  Get new random question  ----------*/
 router.get('/:user_id/questions', function (req, res) {
-	var result= [];
+	var result= {};
 
 	models.Response.findAll({
 		where: {
@@ -26,24 +26,39 @@ router.get('/:user_id/questions', function (req, res) {
 				}
 			}
 		}).then(function (questions) {
-			/* Get random answered question */
-			var randomInt = Math.floor(Math.random() * questions.length),
-			randomQuestion = questions[randomInt];
-			result.push(randomQuestion);
 
-			/* Get all related answers */
-			models.Answer.findAll({
-				where: {
-					QuestionId: randomQuestion.id
-				}
-			}).then(function (answers) {
-				answers.forEach(function (answer) {
-					result.push(answer);
-				});
+			/* If there aren't any unresponded questions... */
+			if(questions.length === 0) {
+				result.success = false;
 				res.json(result);
-			}).catch(function (error) {
-				res.status(500).json(error);
-			});
+			} else {
+				/* Get random answered question */
+				var randomInt = Math.floor(Math.random() * questions.length),
+				randomQuestion = questions[randomInt];
+				result.question = randomQuestion;
+
+				/* Get all related answers */
+				models.Answer.findAll({
+					where: {
+						QuestionId: randomQuestion.id
+					}
+				}).then(function (answers) {
+					result.answers = [];
+					if(answers.length === 0) {
+						result.success = false;
+					} else {
+						result.success = true;
+						answers.forEach(function (answer) {
+							result.answers.push(answer);
+						});
+					}
+					
+					res.json(result);
+				}).catch(function (error) {
+					res.status(500).json(error);
+				});
+			}
+
 		}).catch(function (error) {
 			res.status(500).json(error);
 		});

@@ -50,6 +50,7 @@ router.post('/authenticate', function (req, res) {
 				});
 
 				res.json({
+					id: user.id,
 					success: true,
 					message: 'Got the secret token!',
 					token: token

@@ -17,13 +17,10 @@ angular
 		}).then(function (response) {
 			var data = response.data;
 
-			console.log('parsed response');
-			console.dir(data);
-
 			if(data.token) {
 				/* Store user info in local storage */
 				$localStorage.surveyUser = {
-					email: data.email,
+					id: data.id,
 					token: data.token
 				};
 

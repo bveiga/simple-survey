@@ -33,9 +33,30 @@ router.post('/authenticate', function (req, res) {
 		}
 	}).then(function (user) {
 		if(!user) {
-			res.json({
-				success: false,
-				message:'Login failed. User not found.'
+			models.User.create({
+				email: req.body.email,
+				password: req.body.password
+			}).then(function (newUser) {
+
+				if(!newUser) {
+					res.json({
+						success: false,
+						message:'Register failed. Please try again later.'
+					});
+				} else {
+					var registerToken = jwt.sign({ email: newUser.email }, config.secret , {
+						expiresIn: '24h'
+					});
+
+					res.json({
+						id: newUser.id,
+						success: true,
+						message: 'Got the secret token!',
+						token: registerToken
+					});
+				}
+			}).catch(function (error) {
+				res.status(500).json(error);
 			});
 		} else if (user) {
 			/* Check password */
@@ -45,7 +66,7 @@ router.post('/authenticate', function (req, res) {
 					message:'Login failed. Wrong password.'
 				});
 			} else {
-				var token = jwt.sign({ email: user.email }, config.secret , {
+				var loginToken = jwt.sign({ email: user.email }, config.secret , {
 					expiresIn: '24h'
 				});
 
@@ -53,7 +74,7 @@ router.post('/authenticate', function (req, res) {
 					id: user.id,
 					success: true,
 					message: 'Got the secret token!',
-					token: token
+					token: loginToken
 				});
 			}
 		}

@@ -42,29 +42,26 @@ app.use(express.static(path.join(__dirname, '../client')));
 app.use('/api', index);
 
 /* Verify if user is logged in */
-// app.use(function (req, res, next) {
-// 	var token = req.body.token || req.query.token || req.headers['x-access-token'];
+app.use(function (req, res, next) {
+	var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
-// 	if(token) {
-// 		jwt.verify(token, config.secret, function (error, decoded) {
-// 			if (error) {
-// 				return res.json({
-// 					success: false,
-// 					message: 'Failed to authenticate token.'
-// 				});
-// 			} else {
-// 				/* If verified save so we can use in other routes */
-// 				req.decoded = decoded;
-// 				next();
-// 			}
-// 		});
-// 	} else {
-// 		return res.json({
-// 			success: false,
-// 			message: 'No token received.'
-// 		});
-// 	}
-// });
+	if(token) {
+		jwt.verify(token, config.secret, function (error, decoded) {
+			if (error) {
+				return res.json({
+					success: false,
+					message: 'Failed to authenticate token.'
+				});
+			} else {
+				/* If verified save so we can use in other routes */
+				req.decoded = decoded;
+				next();
+			}
+		});
+	} else {
+		return res.redirect('/');
+	}
+});
 
 app.use('/api/users', users);
 app.use('/api/questions', questions);
@@ -72,10 +69,11 @@ app.use('/api/answers', answers);
 app.use('/api/responses', responses);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function(req, res) {
 	var err = new Error('Not Found');
 	err.status = 404;
-	next(err);
+
+	res.redirect('/');
 });
 
 // error handler

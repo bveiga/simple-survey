@@ -32,7 +32,7 @@ router.get('/:user_id/questions', function (req, res) {
 				result.success = false;
 				res.json(result);
 			} else {
-				/* Get random answered question */
+				/* Get random unanswered question */
 				var randomInt = Math.floor(Math.random() * questions.length),
 				randomQuestion = questions[randomInt];
 				result.question = randomQuestion;

@@ -46,8 +46,8 @@ router.post('/users/:user_id/questions/:question_id/create', function (req, res)
 		text: req.body.text,
 		UserId: req.params.user_id,
 		QuestionId: req.params.question_id
-	}).then(function (responses) {
-		res.json(responses);
+	}).then(function (response) {
+		res.json(response);
 	}).catch(function (error) {
 		res.status(500).json(error);
 	});

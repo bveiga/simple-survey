@@ -20,7 +20,9 @@ function ($scope, $location, SurveyService, Page) {
 
 	$scope.question = {};
 	$scope.listOfAnswers = {};
+	$scope.selectedAnswerPos = 0;
 
+	/* Get random question as soon as page loads */
 	SurveyService.getRandomQuestion(function (result) {
 		if(result.success === true) {
 			if(result.answers.length > 0) {
@@ -33,4 +35,25 @@ function ($scope, $location, SurveyService, Page) {
 			$scope.question = {text: 'Looks like you\'ve answered all our questions.'};
 		}
 	});
+
+
+	$scope.userResponse = function() {
+		$scope.loading = true;
+
+		if($scope.selectedAnswerPos > -1) {
+			var selectedAnswer = $scope.listOfAnswers[$scope.selectedAnswerPos];
+
+			SurveyService.createUserResponse(selectedAnswer, function (result) {
+				if(result.success === true) {
+					$location.path('/survey');
+				} else {
+					$scope.error = 'There was an error sending your response. Try again later.';
+					$scope.loading = false;
+				}
+			});
+		} else {
+			$scope.error = 'Please select an answer.';
+		}
+
+	};
 }]);

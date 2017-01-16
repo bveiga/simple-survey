@@ -6,12 +6,12 @@
 			</div>
 			<form name="questionform" ng-submit="userResponse()" role="form">
 				<div class="panel-body">
-						<div class="radio" ng-repeat="(i, answer) in listOfAnswers">
-							<label>
-								<input type="radio" name="answer-{{ i }}">
-								{{ answer.option }}. {{ answer.text }}
-							</label>
-						</div>
+					<div class="radio" ng-repeat="(i, answer) in listOfAnswers">
+						<label>
+							<input type="radio" name="answer" ng-model="selectedAnswerPos" value="{{i}}">
+							{{ answer.option }}. {{ answer.text }}
+						</label>
+					</div>
 				</div>
 				<div ng-if="listOfAnswers.length > 0" class="panel-footer">
 					<button type="submit" class="btn btn-success btn-sm" ng-disabled="loading">

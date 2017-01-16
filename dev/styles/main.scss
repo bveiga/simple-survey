@@ -105,17 +105,9 @@ body {
 	font-family: 'PT Sans Narrow', sans-serif;
 }
 
-.page-wrap {
-	position: relative;
-	display: block;
-	width: 100%;
-	min-height: calc(100% - 67px);
-	overflow: auto;
-	
-	.page {
-		margin: 40px auto;
-		overflow: hidden;
-	}
+.page {
+	margin: 40px auto;
+	overflow: hidden;
 }
 
 .howdy-holder {

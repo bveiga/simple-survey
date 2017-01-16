@@ -12,7 +12,8 @@
 var app = angular
 	.module('simpleSurveyUi', [
 		'ngResource',
-		'ngRoute'
+		'ngRoute',
+		'ngStorage'
 	]);
 
 app.config(['$routeProvider', '$locationProvider', '$httpProvider',
@@ -23,6 +24,11 @@ function ($routeProvider, $locationProvider, $httpProvider) {
 			controller: 'HomeController',
 			controllerAs: 'home'
 		})
+		.when('/survey',{
+			templateUrl: '../views/survey.html',
+			controller: 'SurveyController',
+			controllerAs: 'survey'
+		})
 		.otherwise({
 			redirectTo:'/'
 		});
@@ -32,6 +38,24 @@ function ($routeProvider, $locationProvider, $httpProvider) {
 	/* Setting up httpProvider */
 	$httpProvider.defaults.useXDomain = true;
 	delete $httpProvider.defaults.headers.common['X-Requested-With'];	
+}]);
+
+app.run(['$rootScope', '$http', '$location', '$localStorage',
+function ($rootScope, $http, $location, $localStorage) {
+	if($localStorage.surveyUser) {
+		console.log('local storage is set');
+		$http.defaults.headers.common.Authorization = 'Bearer '+$localStorage.surveyUser.token;
+	}
+
+	/* Send user back to home page to log in */
+	$rootScope.$on('$locationChangeStart', function () {
+		console.log('change location');
+		var homePage = '/';
+		var isRestricted = $location.path() !== homePage;
+		if(isRestricted && !$localStorage.surveyUser) {
+			$location.path(homePage);
+		}
+	});
 }]);
 
 /*==================================================================================

@@ -24,12 +24,13 @@ var paths = {
 		scripts: 'dev/scripts/**/*.js'
 	},
 	vendor: {
-		styles: 'node_modules/bootstrap/dist/css/bootstrap.css',
+		styles: 'node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss',
 		scripts: [
 			'node_modules/angular/angular.js',
 			'node_modules/angular-resource/angular-resource.js',
 			'node_modules/angular-route/angular-route.js',
-			'node_modules/angular-sanitize/angular-sanitize.js'
+			'node_modules/angular-sanitize/angular-sanitize.js',
+			'node_modules/ngstorage/ngStorage.js'
 		]
 	},
 	server: './server/bin/www'
@@ -78,7 +79,8 @@ gulp.task('vendor-scripts', function () {
 });
 gulp.task('vendor-styles', function () {
 	return gulp.src(paths.vendor.styles)
-		.pipe(concat('vendor.css'))
+		.pipe(concat('vendor.scss'))
+		.pipe(sass({ outputStyle: 'compressed', errLogToConsole: true }))
 		.pipe(gulp.dest('client/styles'));
 });
 

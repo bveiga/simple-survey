@@ -4,32 +4,8 @@ var express = require('express');
 var router = express.Router();
 var models = require('../models');
 
-/*----------  Create a new user  ----------*/
-router.post('/create', function (req, res) {
-	models.User.create({
-		email: req.body.email
-	}).then(function (user) {
-		res.json(user);
-	}).catch(function (error) {
-		res.status(500).json(error);
-	});
-});
-
-/*----------  Get user by email  ----------*/
-router.post('/login', function (req, res) {
-	models.User.find({
-		where: {
-			email: req.body.email
-		}
-	}).then(function (user) {
-		res.json(user);
-	}).catch(function (error) {
-		res.status(500).json(error);
-	});
-});
-
 /*----------  Get new random question  ----------*/
-router.get('/:user_id', function (req, res) {
+router.get('/:user_id/questions', function (req, res) {
 	var result= [];
 
 	models.Response.findAll({

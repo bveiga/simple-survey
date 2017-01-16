@@ -1,8 +1,13 @@
-/*============================================
-=            Variable Definitions            =
-============================================*/
-/*----------  colors  ----------*/
-/*$veiga-gray:	#d9d9d9;*/
+/*=======================================
+=            Setup Variables            =
+=======================================*/
+$bg_color: #cccccc;
+$text_bg: #eeeeee;
+$default_boxshadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+
+$medium_blue: #4f9fcf;
+$dark_blue: #2f6f9f;
+$darker_blue: #4B85B2;
 
 
 /*=============================
@@ -46,328 +51,64 @@
 }
 
 /*=====================================
-=            RESET STYLING            =
+=            Base Elements            =
 =====================================*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font-weight: inherit;
-	font-style: inherit;
-	font-family: inherit;
-	vertical-align: baseline;
+img {
+	width: 100%;
 }
 
-body {
-	line-height: 1;
-}
-
-ol, ul {
+li {
 	list-style: none;
 }
 
-blockquote, q {
-	quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-html {
-	-webkit-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%;
-}
-
-
-/*----------  HTML5 Elements Reset  ----------*/
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section, main {
-	display: block;
-}
-
-audio, canvas, video, progress, picture {
-	display: inline-block;
-}
-
-template {
-	display: none;
-}
-
-/*----------  Form Elements Reset  ----------*/
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
-	-webkit-appearance: none;
-}
-
-input[type="search"] {
-	-webkit-appearance: none;
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
-}
-
-textarea {
-	overflow: auto;
-	vertical-align: top;
-	resize: vertical;
-}
-
-::-moz-focus-inner {
-	border: 0;
-	padding: 0;
-}
-
-/*=====================================
-=            Base Elements            =
-=====================================*/
-html {
-	height: 100%;
-}
-
-body {
-	height: 100%;
-	background-color: #F6F5F1;
-	font-family: oswald-light, "Helvetica Neue", "HelveticaNeue", Arial, sans-serif;
-}
-
-a {
-	color: initial;
-	text-decoration: none;
-}
-
-
-p {
-	text-align: left;
-	font-size: 25px;
-	line-height: 35px;
-	margin-bottom: 12px;
-}
-	p.bold {
-		font-size: 35px;
-		font-family: oswald, sans-serif;
-		text-align: left;
-	}
-
-h2 {
-	font-size: 40px;
-	text-align: left;
-	margin: 0px 10px 42px;
-}
-
-h3 {
-	font-size: 30px;
-	text-align: left;
-	margin: 0px 0px 15px 0px;
-}
-
-h4 {
-	font-family: oswald, sans-serif;
-	font-size: 20px;
-	font-weight: bold;
-	text-align: left;
-}
-
-label,
-input,
-textarea {
-	position: relative;
-	width: calc(100% - 22px);
-	margin: 8px 0px;
-	font-family: oswald, sans-serif;
-}
-input {
-	height: 40px;
-	padding-left: 10px;
-	line-height: 30px;
-	font-size: 20px;
-	letter-spacing: 1px;
-	border-radius: 0px;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-}
-	input[type="submit"] {
-		cursor: pointer;
-		width: 98%;
-		height: 40px;
-		background: #DD4B39;
-		line-height: 22px;
-		color: white;
-		font-family: oswald, "Helvetica Neue";
-		font-size: 18px;
-		border: none;
-		margin-bottom: 10px;
-		padding: 10px;
-		box-shadow: 0px 3px #E00000;
-		-moz-box-shadow: 0px 3px #E00000;
-		-webkit-box-shadow: 0px 3px #E00000;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-	}
-		input[type="submit"]:hover {
-			position:relative;
-			top:3px;
-			box-shadow:none;
-			-moz-box-shadow:none;
-			-webkit-box-shadow:none;
-		}
-
-textarea {
-	line-height: 30px;
-	font-size: 20px;
-	padding: 10px;
-	border: 1px solid #CCCCCC;
-	width: calc(98% - 20px);
-	height: 115px;
-}
-
-::-webkit-input-placeholder, /* WebKit browsers */
-:-moz-placeholder, /* Mozilla Firefox 4 to 18 */
-::-moz-placeholder, /* Mozilla Firefox 19+ */
-:-ms-input-placeholder { /* Internet Explorer 10+ */
-   color:    black;
-   opacity:  1;
+a:hover {
+    text-decoration: none;
 }
 
 svg {
 	width: 100%;
-}
 
-/*===============================================
-=            Header Section Elements            =
-===============================================*/
-.header-wrap {
-	position: relative;
-	display: block;
-	width: 100%;
-	height: 65px;
-	border-bottom: 2px solid #83c2d3;
-	background-color: white;
-}
-	.logo-holder {
-		position: relative;
-		display: block;
-		float: left;
-		height: 100%;
+	text.svg-font {
+		font-family: deftonestylus, sans-serif;
+		font-weight: normal;
+		font-size: 150px;
+		line-height: 200px;
+		color: #363636;
 	}
-		.logo-holder img {
-			height: 100%;
-		}
-
-	.menu-holder {
-		position: relative;
-		display: block;
-		float: right;
-		height: 100%;
-	}
-
-.header,
-.page {
-	position: relative;
-	display: block;
-	width: 980px;
-	margin: auto;
-	height: 100%;
 }
 
-ul.menu {
-	display: block;
-	height: 100%;
+/*==========================================
+=            Header/Nav Styling            =
+==========================================*/
+.navbar-default {
+	box-shadow: $default_boxshadow;
 }
-	.menu li {
-		position: relative;
-		display: block;
-		float: left;
-		padding: 22px 10px;
-		font-size: 22px;
-		cursor: pointer;
+
+.navbar-brand {
+    padding: 2px;
+    margin-left: 13px;
+
+	img {
+		width: auto;
+	    height: 100%;
 	}
-		.menu li:hover a,
-		.menu li.selected a {
-			color: #83c2d3;
-		}
+}
 
 /*============================================
-=            Body Content Styling            =
+=            Body/Content Styling            =
 ============================================*/
-.page-wrap {
-	position: relative;
-	display: block;
-	width: 100%;
-	min-height: calc(100% - 67px);
-	overflow: auto;
+body {
+	color: #333333;
+	padding-top: 71px;
+	background-color: $bg_color;
+	font-size: 18px;
+	font-family: 'PT Sans Narrow', sans-serif;
 }
-	.page-wrap.contact {
-		background-color: #F6F5F1;
-	}
 
 .page {
 	margin: 40px auto;
 	overflow: hidden;
 }
-	.page ul.menu {
-		width: 235px;
-		margin: auto;
-		overflow: auto;
-	}
-		.page ul.menu a {
-			color: #FFCC00;
-			text-shadow: 1px 1px 1px black;
-		}
-		.page ul.menu li:hover a {
-			color: #d9d9d9;
-		}
-
-/*=============================================
-=            Other Styling / Misc.            =
-=============================================*/
-text.svg-font {
-	font-family: deftonestylus, sans-serif;
-	font-weight: normal;
-	font-size: 150px;
-	line-height: 200px;
-	color: #363636;
-}
-
-a.accent {
-	display: inline-block;
-	height: 38px;
-	color: #b9b9b9;
-	text-shadow: 1px 1px 1px black;
-	-webkit-transition: all .3s linear;
-	-o-transition: all .3s linear;
-	-moz-transition: all .3s linear;
-	-ms-transition: all .3s linear;
-	-kthtml-transition: all .3s linear;
-	transition: all .3s linear;
-}
-	a.accent:hover {
-		color: #FFCC00;
-		text-shadow: 1px 1px 1px black;
-	}
 
 .howdy-holder {
 	display: block;
@@ -376,94 +117,186 @@ a.accent {
 	margin: auto;
 }
 
-.row {
-	display: block;
-	width: 100%;
-	overflow: auto;
-}
-
-.one-third:first-child,
-.two-third:first-child {
-	margin-left: 0px;
-}
-	.one-third:first-child {
-		width: 33%;
-	}
-	.two-third:first-child {
-		width: 67%;
-	}
-
-.one-third,
-.two-third {
+.body-content {
 	position: relative;
-	margin: 0px 0px 30px 30px;
-	display: block;
-	float: left;
-}
-	.one-third {
-		width: calc(33% - 30px);
-	}
-	.two-third {
-		width: calc(67% - 30px);
-	}
-
-.picture-frame {
-	background-color: white;
-	padding: 10px;
-	width: calc(100% - 20px);
-}
-	.picture-frame img {
-		width: 100%;
-	}
-	.picture-frame p {
-		margin: 10px 0px 0px;
-	}
-
-.about-holder {
-	/*background-color: white;*/
-	padding: 10px;
-}
-	.about-holder p {
-		font-size: 20px;         
-	}
-
-.info-holder {
-	/*background-color: white;*/
-	margin: 30px 0px 0px;
-	padding: 10px;
-}
-	.info-holder p {
-		text-align: center;
-	}
-
-
-/*===========================================
-=            Custom Form Styling            =
-===========================================*/
-.form-side, .info-side {
-	float: left;
-	display: block;
-	margin: 0px 10px;
-}
-	.form-side {
-		width: calc(450px - 20px);
-	}
-	.info-side {
-		width: calc(250px - 20px);
-	}
-
-.social img {
-	float: left;
-	width: 80px;
-	margin: 10px 7.5px;
+    margin-bottom: 20px;
+	top: 20px;
 }
 
-.email-holder {
-	position: relative;
-	display: block;
-	width: 92%;
-	margin: auto;
-	/*background-color: white;*/
-	padding: 20px;
+.portrait-holder {
+    height: 350px;
 	overflow: hidden;
+	
+	img {
+	    position: relative;
+	    width: auto;
+	    height: 100%;
+	    right: 640px;
+	}
 }
+
+/*----------  side bar  ----------*/
+.sidebar-list {
+    padding: 0;
+    margin: 0;
+	
+}
+	.sidebar-list li:hover {
+	    background: $medium_blue;
+	    
+	    a {
+	        color: white;
+	    }
+	}
+
+	.sidebar-list a {
+	    display: block;
+	    padding: 5px 15px;
+	}
+
+/*----------  post entry styling  ----------*/
+.post {
+	margin-bottom: 20px;
+	background-color: $text_bg;
+	box-shadow: $default_boxshadow;
+}
+
+.post-img {
+	width: 100%;
+}
+.post-inner {
+    position: relative;
+	width: 100%;
+	padding: 20px;
+	
+	h2 {
+		margin-top: 0px;
+	    font-size: 25px;
+	}
+	h3 {
+		font-size: 20px;
+	}
+	h5 {
+	    font-size: 15px;
+	    margin-top: 10px;
+	}
+	p {
+	    font-size: 16px;
+	}
+	
+	.post-heading {
+		margin-bottom: 20px;
+	}
+
+	.centered-img {
+		display: block;
+		max-width: 100%;
+		height: 100%;
+		margin: auto;
+		width: auto;
+	}
+
+	.full-img {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.keyword-holder {
+	span {
+		font-style: italic;
+	}
+}
+
+
+/*----------  poll styling  ----------*/
+.panel {
+	border: none;
+    border-radius: 0px;
+    overflow-y: auto;
+    background-color: $text_bg;
+    box-shadow: $default_boxshadow;
+}
+.panel.contact-holder {
+	padding: 15px;
+}
+
+.panel-body h2 {
+    margin-top: 0;
+}
+
+.user-poll-section {
+	box-shadow: $default_boxshadow;
+}
+
+
+/*----------  buttons  ----------*/
+.btn {
+	border-radius: 0px;
+}
+
+.btn-success {
+	background-color: $medium_blue;
+	border-color: $medium_blue;
+    border-radius: 0px;
+}
+	.btn-success:hover {
+		background-color: $dark_blue;
+	    border-color: $darker_blue;
+	}
+
+.btn-success:active,
+.btn-success.active,
+.btn-success:focus,
+.btn-success.focus,
+.btn-success:active:hover,
+.btn-success:active:focus,
+.btn-success:active.focus,
+.btn-success.active:hover,
+.btn-success.active:focus,
+.btn-success.active.focus,
+.open > .btn-success.dropdown-toggle:hover,
+.open > .btn-success.dropdown-toggle:focus,
+.open > .btn-success.dropdown-toggle.focus {
+	background-color: $dark_blue;
+	border-color: $darker_blue;
+}
+
+/*----------  forms  ----------*/
+.form-control {
+	font-size: 16px;
+	border-radius: 0px;
+}
+
+/*----------  Social Media  ----------*/
+.social-icon {
+    float: left;
+    width: 80px;
+    margin: 10px 7.5px;
+}
+
+
+/*======================================
+=            Footer Styling            =
+======================================*/
+.footer p {
+    margin: 10px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

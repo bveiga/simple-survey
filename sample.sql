@@ -114,6 +114,7 @@ DROP TABLE IF EXISTS `Users`;
 CREATE TABLE `Users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `isAdmin` tinyint(1) DEFAULT '0',
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
@@ -127,7 +128,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'bspveiga@gmail.com',0,'2017-01-10 08:24:46','2017-01-10 08:24:46'),(2,'bruno@gowlikarveiga.com',0,'2017-01-11 04:20:57','2017-01-11 04:20:57'),(3,'bruno@veigastudios.com',0,'2017-01-11 04:21:20','2017-01-11 04:21:20');
+INSERT INTO `Users` VALUES (1,'bspveiga@gmail.com','testing',0,'2017-01-10 08:24:46','2017-01-10 08:24:46'),(2,'bruno@gowlikarveiga.com','testing',0,'2017-01-11 04:20:57','2017-01-11 04:20:57'),(3,'bruno@veigastudios.com','testing',0,'2017-01-11 04:21:20','2017-01-11 04:21:20');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

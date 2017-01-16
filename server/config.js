@@ -1,13 +1,11 @@
 module.exports = {
 	development: {
+		secret: 'authenticationsecret',
 		url: process.env.DATABASE_URL,
 		dialect: 'mysql'
 	},
 	production: {
-		url: process.env.DATABASE_URL,
-		dialect: 'mysql'
-	},
-	staging: {
+		secret: 'authenticationsecret',
 		url: process.env.DATABASE_URL,
 		dialect: 'mysql'
 	}

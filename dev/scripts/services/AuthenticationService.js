@@ -27,11 +27,9 @@ angular
 				/* JWT schema for content headers */
 				$http.defaults.headers.common.Authorization = 
 					'Bearer '+ data.token;
-
-				callback({ success: true });
-			} else {
-				callback(data);
 			}
+			
+			callback(data);
 		});
 	}
 

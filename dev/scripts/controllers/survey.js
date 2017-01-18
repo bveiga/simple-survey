@@ -15,7 +15,7 @@ angular
 	'SurveyService',
 	'Page',
 function ($scope, $location, SurveyService, Page) {
-	Page.setTitle('Simple Survey | Welcome');
+	Page.setTitle('Simple Survey | Survey');
 	Page.setLH(true);
 
 	$scope.question = {};

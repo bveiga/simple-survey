@@ -33,6 +33,8 @@ router.post('/authenticate', function (req, res) {
 		}
 	}).then(function (user) {
 		if(!user) {
+
+			/* Create new user if one doesn't exist */
 			models.User.create({
 				email: req.body.email,
 				password: req.body.password
@@ -44,7 +46,8 @@ router.post('/authenticate', function (req, res) {
 						message:'Register failed. Please try again later.'
 					});
 				} else {
-					var registerToken = jwt.sign({ email: newUser.email }, config.secret , {
+					var registerToken = 'Bearer '+
+					jwt.sign({ email: newUser.email }, config.secret , {
 						expiresIn: '24h'
 					});
 
@@ -66,12 +69,16 @@ router.post('/authenticate', function (req, res) {
 					message:'Login failed. Wrong password.'
 				});
 			} else {
-				var loginToken = jwt.sign({ email: user.email }, config.secret , {
+				var loginToken = jwt.sign({
+					email: user.email,
+					isAdmin: user.isAdmin
+				}, config.secret , {
 					expiresIn: '24h'
 				});
 
 				res.json({
 					id: user.id,
+					isAdmin: user.isAdmin,
 					success: true,
 					message: 'Got the secret token!',
 					token: loginToken

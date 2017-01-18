@@ -43,8 +43,10 @@ app.use('/api', index);
 
 /* Verify if user is logged in */
 app.use(function (req, res, next) {
-	var token = req.body.token || req.query.token || req.headers['x-access-token'];
-
+	var token = req.get('Authorization') ?
+		req.get('Authorization').substring(7) :
+		req.query.token;
+	
 	if(token) {
 		jwt.verify(token, config.secret, function (error, decoded) {
 			if (error) {
@@ -59,7 +61,10 @@ app.use(function (req, res, next) {
 			}
 		});
 	} else {
-		return res.redirect('/');
+		return res.status(403).send({ 
+            success: false, 
+            message: 'No token provided.'
+        });
 	}
 });
 

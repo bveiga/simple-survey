@@ -1,0 +1,39 @@
+<div class="page">
+	<div class="howdy-holder">
+		<svg>
+			<text class="svg-font" x="60" y="100">
+				Howdy!
+			</text>
+		</svg>
+		<p class="bold">Welcome to Simple Survey.</p>
+		<p>
+			Login below - if you don't already have an account, we will create one for you.
+		</p>
+		<form name="loginform" ng-submit="login()" role="form">
+			<div class="col-lg-12"
+				ng-class="{ 'has-error': submitted && loginform.email.$invalid }">
+				<div class="form-group">
+					<input ng-model="email" type="email"
+						class="form-control" name="email"
+						placeholder="Email" required>
+				</div>
+			</div>
+			<div class="col-lg-12"
+				ng-class="{ 'has-error': submitted && loginform.password.$invalid }">
+				<div class="form-group">
+					<input ng-model="password" type="password"
+						class="form-control" name="password"
+						placeholder="Password" required>
+				</div>
+			</div>
+			<div class="col-lg-12">
+				<div class="form-group">
+					<button type="submit" class="btn btn-success" ng-disabled="loading">
+						Log In
+					</button>
+				</div>
+			</div>
+			<p class="form-error" ng-if="error">{{ error }}</p>
+		</form>
+	</div>
+</div>

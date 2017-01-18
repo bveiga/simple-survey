@@ -1,0 +1,26 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel">
+			<div class="panel-heading">
+				{{ question.text }}
+			</div>
+			<form name="questionform" ng-submit="userResponse()" role="form">
+				<div class="panel-body">
+					<div class="radio" ng-repeat="(i, answer) in listOfAnswers">
+						<label>
+							<input type="radio" name="answer" ng-model="selectedAnswerPos" value="{{i}}">
+							{{ answer.option }}. {{ answer.text }}
+						</label>
+					</div>
+				</div>
+				<div ng-if="listOfAnswers.length > 0" class="panel-footer">
+					<button type="submit" class="btn btn-success btn-sm" ng-disabled="loading">
+						SUBMIT
+					</button>
+					<p class="form-error" ng-if="error">{{ error }}</p>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" ng-app="simpleSurveyUi" ng-controller="MainController">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="A simple site that asks you questions, and records your answers.">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<!-- Page Title -->
+		<title ng-bind="Page.title()"></title>
+		<base href="/">
+		
+		<!-- Stylesheets -->
+		<link rel="stylesheet" href="/styles/vendor.css">
+		<link rel="stylesheet" href="/styles/client.css">
+	</head>
+	<body>
+		<!-- Header -->
+		<div ng-if="Page.getLH()">
+			<div ng-include src="'views/header.html'"></div>
+		</div>
+
+		<!-- Body Content -->
+		<div class="container" ng-view=""></div>
+		
+		<!-- Scripts -->
+		<script type="text/javascript" src="/scripts/vendor.js"></script>
+		<script type="text/javascript" src="/scripts/client.js"></script>
+	</body>
+</html>

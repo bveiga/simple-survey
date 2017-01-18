@@ -1,0 +1,247 @@
+/*=======================================
+=            Setup Variables            =
+=======================================*/
+$bg_color: #cccccc;
+$text_bg: #eeeeee;
+$default_boxshadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+
+$medium_blue: #4f9fcf;
+$dark_blue: #2f6f9f;
+$darker_blue: #4B85B2;
+
+
+/*=============================
+=            Fonts            =
+=============================*/
+@font-face {
+	font-family: oswald-light;
+	src: url('../fonts/oswald-light.eot');
+	src: url('../fonts/oswald-light.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/oswald-light.woff') format('woff'),
+		url('../fonts/oswald-light.ttf') format('truetype'),
+		url('../fonts/oswald-light.svg#Oswald-Light') format('svg');
+}
+
+@font-face {
+	font-family: oswald;
+	src: url('../fonts/oswald.eot');
+	src: url('../fonts/oswald.eot') format('embedded-opentype'),
+		 url('../fonts/oswald.woff2') format('woff2'),
+		 url('../fonts/oswald.woff') format('woff'),
+		 url('../fonts/oswald.ttf') format('truetype'),
+		 url('../fotns/oswald.svg#oswald') format('svg');
+}
+
+@font-face {
+	font-family: oswald-stencil;
+	src: url('../fonts/oswald-stencil.eot');
+	src: url('../fonts/oswald-stencil.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/oswald-stencil.woff') format('woff'),
+		url('../fonts/oswald-stencil.ttf') format('truetype'),
+		url('../fonts/oswald-stencil.svg#OswaldStencil-Bold') format('svg');
+}
+
+@font-face {
+	font-family: deftonestylus;
+	src: url('../fonts/deftonestylus.eot');
+	src: url('../fonts/deftonestylus.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/deftonestylus.woff') format('woff'),
+		url('../fonts/deftonestylus.ttf') format('truetype'),
+		url('../fonts/deftonestylus.svg#OswaldStencil-Bold') format('svg');
+}
+
+/*=====================================
+=            Base Elements            =
+=====================================*/
+img {
+	width: 100%;
+}
+
+li {
+	list-style: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+svg {
+	width: 100%;
+
+	.svg-font {
+		font-family: deftonestylus, sans-serif;
+		font-weight: normal;
+		font-size: 150px;
+		line-height: 200px;
+		color: #363636;
+	}
+}
+
+/*==========================================
+=            Header/Nav Styling            =
+==========================================*/
+.navbar-default {
+	box-shadow: $default_boxshadow;
+}
+
+.navbar {
+	p {
+		position: relative;
+		float: left;
+		margin-left: 15px;
+		padding: 9px 0;
+		margin-top: 8px;
+		margin-bottom: 8px;
+	}
+}
+
+.navbar-brand {
+	padding: 2px;
+	margin-left: 13px;
+
+	img {
+		width: auto;
+		height: 100%;
+	}
+}
+
+/*============================================
+=            Body/Content Styling            =
+============================================*/
+body {
+	color: #333333;
+	padding-top: 71px;
+	background-color: $bg_color;
+	font-size: 18px;
+	font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.page {
+	margin: 40px auto;
+	overflow: hidden;
+}
+
+.howdy-holder {
+	display: block;
+	max-width: 600px;
+	text-align: center;
+	margin: auto;
+}
+
+.body-content {
+	position: relative;
+	margin-bottom: 20px;
+	top: 20px;
+}
+
+.portrait-holder {
+	height: 350px;
+	overflow: hidden;
+	
+	img {
+		position: relative;
+		width: auto;
+		height: 100%;
+		right: 640px;
+	}
+}
+
+.response-count {
+	font-size: 14px;
+	color: green;
+	margin: 0 10px;
+}
+
+/*----------  poll styling  ----------*/
+.panel {
+	border: none;
+	border-radius: 0px;
+	overflow-y: auto;
+	background-color: $text_bg;
+	box-shadow: $default_boxshadow;
+}
+
+.panel-body h2 {
+	margin-top: 0;
+}
+
+.user-poll-section {
+	box-shadow: $default_boxshadow;
+}
+
+
+/*----------  buttons  ----------*/
+.btn {
+	border-radius: 0px;
+}
+
+.btn-success {
+	background-color: $medium_blue;
+	border-color: $medium_blue;
+	border-radius: 0px;
+	
+	&:hover {
+		background-color: $dark_blue;
+		border-color: $darker_blue;
+	}
+}
+
+.btn-success:active,
+.btn-success.active,
+.btn-success:focus,
+.btn-success.focus,
+.btn-success:active:hover,
+.btn-success:active:focus,
+.btn-success:active.focus,
+.btn-success.active:hover,
+.btn-success.active:focus,
+.btn-success.active.focus,
+.open > .btn-success.dropdown-toggle:hover,
+.open > .btn-success.dropdown-toggle:focus,
+.open > .btn-success.dropdown-toggle.focus {
+	background-color: $dark_blue;
+	border-color: $darker_blue;
+}
+
+/*----------  forms  ----------*/
+.form-control {
+	font-size: 16px;
+	border-radius: 0px;
+}
+
+.form-error {
+	padding: 15px; 
+	margin: 0;
+}
+
+/*----------  Social Media  ----------*/
+.social-icon {
+	float: left;
+	width: 80px;
+	margin: 10px 7.5px;
+}
+
+
+/*======================================
+=            Footer Styling            =
+======================================*/
+.footer p {
+	margin: 10px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

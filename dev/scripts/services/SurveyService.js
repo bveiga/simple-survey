@@ -11,29 +11,29 @@ angular
 .factory('SurveyService', ['$http', '$localStorage', function ($http, $localStorage) {
 
 	function getRandomQuestion(callback) {
-		var userId = $localStorage.surveyUser.id;
-		$http.get('/api/users/'+userId+'/questions').then(function (response) {
+		var auth = $localStorage.surveyUser;
+		$http.get('/api/users/'+auth.id+'/questions').then(function (response) {
 			var data = response.data;
 			callback(data);
 		});
 	}
 
 	function createUserResponse(selectedAnswer, callback) {
-		var userId = $localStorage.surveyUser.id;
+		var auth = $localStorage.surveyUser;
 
 		$http.post(
-			'/api/responses/users/'+userId+'/questions/'+selectedAnswer.QuestionId+'/create', {
+			'/api/responses/users/'+auth.id+'/questions/'+selectedAnswer.QuestionId+'/create', {
 				option: selectedAnswer.option,
 				text: selectedAnswer.text
 			}).then(function (res) {
 			var data = res.data;
 			console.log(data);
 
-			// if(data.response.userId === userId) {
-				// callback({ success: true });
-			// } else {
+			if(data.UserId === auth.id) {
+				callback({ success: true });
+			} else {
 				callback({ success: false });
-			// }
+			}
 		});
 	}
 	

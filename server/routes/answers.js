@@ -26,17 +26,4 @@ router.get('/questions/:question_id', function (req, res) {
 	});
 });
 
-/*----------  Create a new answer  ----------*/
-router.post('/questions/:question_id/create', function (req, res) {
-	models.Answer.create({
-		option: req.body.option,
-		text: req.body.text,
-		QuestionId: req.params.question_id
-	}).then(function (answer) {
-		res.json(answer);
-	}).catch(function (error) {
-		res.status(500).json(error);
-	});
-});
-
 module.exports = router;

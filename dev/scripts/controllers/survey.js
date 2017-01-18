@@ -15,12 +15,11 @@ angular
 	'SurveyService',
 	'Page',
 function ($scope, $location, SurveyService, Page) {
-	Page.setTitle('Simple Survey | Welcome');
+	Page.setTitle('Simple Survey | Survey');
 	Page.setLH(true);
 
 	$scope.question = {};
 	$scope.listOfAnswers = {};
-	$scope.selectedAnswerPos = 0;
 
 	/* Get random question as soon as page loads */
 	SurveyService.getRandomQuestion(function (result) {

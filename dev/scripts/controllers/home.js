@@ -22,7 +22,11 @@ function ($scope, $location, AuthenticationService, Page) {
 		$scope.loading = true;
 		AuthenticationService.Login($scope.email, $scope.password, function (result) {
 			if(result.success === true) {
-				$location.path('/survey');
+				if(result.isAdmin) {
+					$location.path('/admin');
+				} else {
+					$location.path('/survey');
+				}
 			} else {
 				$scope.error = result.message;
 				$scope.loading = false;

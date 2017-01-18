@@ -27,9 +27,8 @@ angular
 				text: selectedAnswer.text
 			}).then(function (res) {
 			var data = res.data;
-			console.log(data);
 
-			if(data.UserId === auth.id) {
+			if(parseInt(data.UserId) === auth.id) {
 				callback({ success: true });
 			} else {
 				callback({ success: false });

@@ -29,7 +29,7 @@ angular
 			var data = res.data;
 			console.log(data);
 
-			if(data.response.UserId === auth.id) {
+			if(data.UserId === auth.id) {
 				callback({ success: true });
 			} else {
 				callback({ success: false });

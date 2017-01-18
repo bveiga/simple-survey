@@ -30,8 +30,8 @@ function ($scope, $location, $route, AdminService, Page) {
 		AdminService.createQuestion($scope.question, function(result) {
 			if(!result.success) {
 				$scope.error = result.message;
-			} else {
 				$scope.loading = false;
+			} else {
 	    		$route.reload();
 			}
 		});

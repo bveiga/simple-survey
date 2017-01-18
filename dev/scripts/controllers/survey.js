@@ -20,7 +20,6 @@ function ($scope, $location, SurveyService, Page) {
 
 	$scope.question = {};
 	$scope.listOfAnswers = {};
-	$scope.selectedAnswerPos = 0;
 
 	/* Get random question as soon as page loads */
 	SurveyService.getRandomQuestion(function (result) {

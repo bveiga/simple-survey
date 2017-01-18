@@ -37,7 +37,7 @@ app.use(cookieParser());
 
 // Serve client pages separately
 app.use(favicon(path.join(__dirname, '../client', 'favicon.ico')));
-app.use(express.static(path.join(__dirname, '../client')));
+app.use('/', express.static(path.join(__dirname, '../client')));
 
 app.use('/api', index);
 

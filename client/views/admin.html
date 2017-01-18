@@ -1,72 +1,59 @@
-<div class="panel panel-default">
-	<div class="panel-heading">
-		Create a new Question:
-	</div>
-	<div class="panel-body">
-		<form name="createquestionform" ng-submit="createQuestion()" role="form">
-			<div class="col-md-8 col-md-offset-2"
-				ng-class="{ 'has-error': submitted && createquestionform.question.$invalid }">
-				<div class="form-group">
+<div class="col-md-8 col-md-offset-2">	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			Create a new Question:
+		</div>
+		<div class="panel-body">
+			<form name="createquestionform" ng-submit="createQuestion()" role="form">
+				<div class="form-group" ng-class="{ 'has-error': submitted && createquestionform.question.$invalid }">
 					<input ng-model="question.text" type="text"
 						class="form-control" name="question"
 						placeholder="Question Text" required>
 				</div>
-			</div>
-			<div class="col-md-8 col-md-offset-2"
-				ng-class="{ 'has-error': submitted && createquestionform.answer1.$invalid }">
-				<div class="form-group">
+				<div class="form-group" ng-class="{ 'has-error': submitted && createquestionform.answer1.$invalid }">
 					<input ng-model="question.answer1" type="text"
 						class="form-control" name="answer1"
 						placeholder="Answer 1" required>
 				</div>
-			</div>
-			<div class="col-md-8 col-md-offset-2"
-				ng-class="{ 'has-error': submitted && createquestionform.answer2.$invalid }">
-				<div class="form-group">
+				<div class="form-group" ng-class="{ 'has-error': submitted && createquestionform.answer2.$invalid }">
 					<input ng-model="question.answer2" type="text"
 						class="form-control" name="answer2"
 						placeholder="Answer 2" required>
 				</div>
-			</div>
-			<div class="col-md-8 col-md-offset-2"
-				ng-class="{ 'has-error': submitted && createquestionform.answer3.$invalid }">
-				<div class="form-group">
+				<div class="form-group" ng-class="{ 'has-error': submitted && createquestionform.answer3.$invalid }">
 					<input ng-model="question.answer3" type="text"
 						class="form-control" name="answer3"
 						placeholder="Answer 3" required>
 				</div>
-			</div>
-			<div class="col-md-8 col-md-offset-2"
-				ng-class="{ 'has-error': submitted && createquestionform.answer4.$invalid }">
-				<div class="form-group">
+				<div class="form-group" ng-class="{ 'has-error': submitted && createquestionform.answer4.$invalid }">
 					<input ng-model="question.answer4" type="text"
 						class="form-control" name="answer4"
 						placeholder="Answer 4" required>
 				</div>
-			</div>
-			<div class="col-lg-12">
 				<div class="form-group">
 					<button type="submit" class="btn btn-success" ng-disabled="loading">
 						Save
 					</button>
 				</div>
-			</div>
-			<p class="form-error" ng-if="error">{{ error }}</p>
-		</form>
+				<p class="form-error" ng-if="error">{{ error }}</p>
+			</form>
+		</div>
 	</div>
 </div>
-<div class="question-list panel panel-default" ng-repeat="question in listOfQuestions">
-	<div class="panel-heading">
-		{{ question.text }} ({{ question.total }} {{ question.total > 1 ? 'responses' : 'response'}})
-	</div>
-	<div class="panel-body">
-		<div class="question-answer" ng-repeat="answer in question.Answers">
-			{{ answer.option }}. {{ answer.text }} ({{ answer.count }} {{ answer.count > 1 ? 'responses' : 'response'}})
-			<div class="progress progress-striped active">
-				<div class="progress-bar progress-bar-success" role="progressbar"
-					aria-valuenow="{{ answer.count/question.total * 100 }}" aria-valuemin="0"
-					aria-valuemax="100" style="width: {{ answer.count/question.total * 100 }}%">
-					<span class="sr-only">{{ answer.count }} people chose this.</span>
+<div class="col-md-8 col-md-offset-2" ng-repeat="question in listOfQuestions">
+	<div class="question panel panel-default">
+		<div class="panel-heading">
+			{{ question.text }} ({{ question.total }} <span class="response-count">{{ question.total != 1 ? 'responses' : 'response'}})</span>
+		</div>
+		<div class="panel-body">
+			<div class="question-answer" ng-repeat="answer in question.Answers">
+				{{ answer.option }}. {{ answer.text }} <span class="response-count">({{ answer.count }} {{ answer.count != 1 ? 'responses' : 'response'}})</span>
+				<div class="progress progress-striped active">
+					<div class="progress-bar progress-bar-success" role="progressbar"
+						aria-valuenow="{{ answer.count/question.total * 100 }}" aria-valuemin="0"
+						aria-valuemax="100" style="width: {{ answer.count/question.total * 100 }}%">
+						<span class="sr-only">{{ answer.count }} people chose this.</span>
+					</div>
 				</div>
 			</div>
 		</div>

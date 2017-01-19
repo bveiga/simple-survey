@@ -8,7 +8,7 @@
 				<div class="panel-body">
 					<div class="radio" ng-repeat="(i, answer) in listOfAnswers">
 						<label>
-							<input type="radio" name="answer" ng-model="selectedAnswerPos" value="{{i}}">
+							<input type="radio" name="answer" ng-model="$parent.selectedAnswerPos" value="{{i}}">
 							{{ answer.option }}. {{ answer.text }}
 						</label>
 					</div>

@@ -11,10 +11,10 @@ angular
 .module('simpleSurveyUi')
 .controller('SurveyController', [
 	'$scope',
-	'$location',
+	'$route',
 	'SurveyService',
 	'Page',
-function ($scope, $location, SurveyService, Page) {
+function ($scope, $route, SurveyService, Page) {
 	Page.setTitle('Simple Survey | Survey');
 	Page.setLH(true);
 
@@ -44,7 +44,7 @@ function ($scope, $location, SurveyService, Page) {
 
 			SurveyService.createUserResponse(selectedAnswer, function (result) {
 				if(result.success === true) {
-					$location.path('/survey');
+					$route.reload();
 				} else {
 					$scope.error = 'There was an error sending your response. Try again later.';
 					$scope.loading = false;
